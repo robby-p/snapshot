@@ -87,13 +87,6 @@ function registerCypressSnapshot () {
     if (config.useRelativeSnapshots) {
       readFile = cy
       .task('readFileMaybe', snapshotFileName)
-      .then(function (contents) {
-        if (!contents) {
-          return cy.writeFile(snapshotFileName, '', 'utf-8', { log: false })
-        }
-
-        return contents
-      })
     } else {
       readFile = cy
       .readFile(snapshotFileName, 'utf-8')
